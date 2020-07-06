@@ -1,13 +1,17 @@
 import * as React from 'react';
 import RcMenu, { Divider, ItemGroup, MenuProps as RcMenuProps } from 'rc-menu';
 import classNames from 'classnames';
+<<<<<<< HEAD
 import { MotionType } from 'rc-trigger/lib/interface';
+=======
+>>>>>>> eb01bee6beb045f72f5d4ce9645fb0ce98102eb1
 import SubMenu from './SubMenu';
 import Item from './MenuItem';
 import { ConfigConsumer, ConfigConsumerProps } from '../config-provider';
 import devWarning from '../_util/devWarning';
 import { SiderContext, SiderContextProps } from '../layout/Sider';
 import collapseMotion from '../_util/motion';
+import { cloneElement } from '../_util/reactNode';
 import MenuContext, { MenuTheme } from './MenuContext';
 
 export { MenuItemGroupProps } from 'rc-menu';
@@ -54,17 +58,34 @@ class InternalMenu extends React.Component<InternalMenuProps> {
   }
 
   renderMenu = ({ getPopupContainer, getPrefixCls, direction }: ConfigConsumerProps) => {
+<<<<<<< HEAD
     const { prefixCls: customizePrefixCls, className, theme } = this.props;
     const defaultMotions = {
       horizontal: { motionName: 'slide-up' },
       inline: collapseMotion as MotionType,
+=======
+    const { prefixCls: customizePrefixCls, className, theme, expandIcon } = this.props;
+    const defaultMotions = {
+      horizontal: { motionName: 'slide-up' },
+      inline: collapseMotion,
+>>>>>>> eb01bee6beb045f72f5d4ce9645fb0ce98102eb1
       other: { motionName: 'zoom-big' },
     };
 
     const prefixCls = getPrefixCls('menu', customizePrefixCls);
+<<<<<<< HEAD
     const menuClassName = classNames(className, `${prefixCls}-${theme}`, {
       [`${prefixCls}-inline-collapsed`]: this.getInlineCollapsed(),
     });
+=======
+    const menuClassName = classNames(
+      `${prefixCls}-${theme}`,
+      {
+        [`${prefixCls}-inline-collapsed`]: this.getInlineCollapsed(),
+      },
+      className,
+    );
+>>>>>>> eb01bee6beb045f72f5d4ce9645fb0ce98102eb1
 
     return (
       <MenuContext.Provider
@@ -81,6 +102,12 @@ class InternalMenu extends React.Component<InternalMenuProps> {
           prefixCls={prefixCls}
           direction={direction}
           defaultMotions={defaultMotions}
+<<<<<<< HEAD
+=======
+          expandIcon={cloneElement(expandIcon, {
+            className: `${prefixCls}-submenu-expand-icon`,
+          })}
+>>>>>>> eb01bee6beb045f72f5d4ce9645fb0ce98102eb1
         />
       </MenuContext.Provider>
     );
